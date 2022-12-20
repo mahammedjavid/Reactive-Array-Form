@@ -1,0 +1,81 @@
+{{nestedForm.value | json }}
+
+<div class="example-container">
+    <form [formGroup]="nestedForm">
+        <!-- !Story -->
+        <div class="example-form-fields">
+            <mat-form-field appearance="fill">
+                <input matInput placeholder="Enter Story Name" required formControlName="StoryName">
+            </mat-form-field>
+            <button mat-raised-button color="primary" (click)="addFirstControls()" *ngIf="!deletedOne">Add Task</button>
+            <button class="btn btn-danger btn-sm" (click)="removeControlsOne()" *ngIf="deletedOne">Remove Task</button>
+
+
+            <mat-form-field appearance="fill">
+                <mat-label>Choose a Start Date</mat-label>
+                <input matInput [matDatepicker]="picker" formControlName="StoryStartDate">
+                <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+                <mat-datepicker #picker></mat-datepicker>
+            </mat-form-field>
+
+            <mat-form-field appearance="fill">
+                <mat-label>Choose a End Date</mat-label>
+                <input matInput [matDatepicker]="picker2" formControlName="StoryEndDate">
+                <mat-datepicker-toggle matIconSuffix [for]="picker2"></mat-datepicker-toggle>
+                <mat-datepicker #picker2></mat-datepicker>
+            </mat-form-field>
+        </div>
+
+        <!-- !Task -->
+        <div class="example-form-fields" *ngIf="nestedForm.get('TaskName')" id="Task">
+            <mat-form-field appearance="fill">
+                <input matInput placeholder="Enter Task Name" required formControlName="TaskName">
+            </mat-form-field>
+
+            <button mat-raised-button color="primary" (click)="addSecondControls()" *ngIf="!deletedTwo">Add
+                Activity</button>
+            <button class="btn btn-danger btn-sm" (click)="removeControlsTwo()" *ngIf="deletedTwo">Remove
+                Activity</button>
+
+            <mat-form-field appearance="fill">
+                <mat-label>Choose a Start Date</mat-label>
+                <input matInput [matDatepicker]="picker" formControlName="TaskStartDate">
+                <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+                <mat-datepicker #picker></mat-datepicker>
+            </mat-form-field>
+
+            <mat-form-field appearance="fill">
+                <mat-label>Choose a End Date</mat-label>
+                <input matInput [matDatepicker]="picker2" formControlName="TaskEndDate">
+                <mat-datepicker-toggle matIconSuffix [for]="picker2"></mat-datepicker-toggle>
+                <mat-datepicker #picker2></mat-datepicker>
+            </mat-form-field>
+        </div>
+
+
+        <!-- !Activity -->
+        <div class="example-form-fields" *ngIf="nestedForm.get('ActivityName')">
+            <mat-form-field appearance="fill">
+                <input matInput placeholder="Enter Activity Name" required formControlName="ActivityName">
+            </mat-form-field>
+
+
+            <mat-form-field appearance="fill">
+                <mat-label>Choose a Start Date</mat-label>
+                <input matInput [matDatepicker]="picker" formControlName="ActivityStartDate">
+                <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+                <mat-datepicker #picker></mat-datepicker>
+            </mat-form-field>
+
+            <mat-form-field appearance="fill">
+                <mat-label>Choose a End Date</mat-label>
+                <input matInput [matDatepicker]="picker2" formControlName="ActivityEndDate">
+                <mat-datepicker-toggle matIconSuffix [for]="picker2"></mat-datepicker-toggle>
+                <mat-datepicker #picker2></mat-datepicker>
+            </mat-form-field>
+        </div>
+        <button mat-raised-button color="primary" class="btnCenter" type="submit"
+            (click)="onFormSubmit(nestedForm.value)">
+            Submit</button>
+    </form>
+</div>

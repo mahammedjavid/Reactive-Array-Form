@@ -1,0 +1,36 @@
+.example-container mat-form-field + mat-form-field {
+  margin: 0 8px;
+}
+
+.example-container form {
+  margin-bottom: 20px;
+}
+.example-container {
+  width: 70%;
+  margin: auto;
+  display: flex;
+  flex-direction: column;
+}
+
+.example-form-fields {
+  display: grid;
+  grid-template-columns: auto auto auto auto;
+  align-items: center;
+  //   justify-content: center;
+}
+form {
+  margin: auto;
+  display: flex;
+  flex-direction: column;
+  //   justify-content: center;
+  //   border: 2px solid black;
+}
+.btnCenter {
+  width: 100px;
+  align-self: center;
+}
+
+// #Task {
+//   width: 60%;
+//   margin: auto;
+// }
