@@ -1,0 +1,89 @@
+<button mat-raised-button class="m-5" (click)="navigateToAdd()">Add User</button>
+<table class="table text-center">
+    <thead>
+        <tr>
+            <th>Picture</th>
+            <th>Title</th>
+            <th>First Name</th>
+            <th>Last Name</th>
+            <!-- <th>Mail</th> -->
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let data of dataSource | paginate: { itemsPerPage: 5, currentPage: p }">
+            <td><img src="{{data.picture}}" alt="" width="60px" height="60px"></td>
+            <td>{{data.title}}</td>
+            <td>{{data.firstName}}</td>
+            <td>{{data.lastName}}</td>
+            <!-- <td>{{data.email}}</td> -->
+            <td>
+                <i (click)="deleteID(data.id)" class="material-icons" style="cursor: pointer;">delete</i>
+                <span class="material-icons ms-2" (click)="editID(data)" data-bs-toggle="modal"
+                    data-bs-target="#exampleModal" style="cursor: pointer;">edit</span>
+            </td>
+        </tr>
+    </tbody>
+</table>
+
+
+<div class="controls">
+    <pagination-controls style="text-align: center;" (pageChange)="p = $event">
+    </pagination-controls>
+</div>
+
+
+
+
+<!-- Button trigger modal -->
+<!-- <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
+    Launch demo modal
+</button> -->
+
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+
+                <div class="form">
+                    <form class="example-form" [formGroup]="editForm">
+
+                        <table class="example-full-width" cellspacing="0">
+                            <tr>
+                                <td><mat-form-field class="example-full-width">
+                                        <mat-label>First name</mat-label>
+                                        <input matInput formControlName="firstName">
+                                    </mat-form-field></td>
+                                <td><mat-form-field class="example-full-width">
+                                        <mat-label>Last Name</mat-label>
+                                        <input matInput formControlName="lastName">
+                                    </mat-form-field></td>
+                            </tr>
+                        </table>
+
+                        <p>
+                            <mat-form-field class="example-full-width">
+                                <mat-label>Enter Title</mat-label>
+                                <input matInput formControlName="title">
+                            </mat-form-field>
+                            <mat-form-field class="example-full-width">
+                                <mat-label>Picture link</mat-label>
+                                <input matInput formControlName="picture">
+                            </mat-form-field>
+                        </p>
+
+                    </form>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" id="close">Close</button>
+                <button type="button" class="btn btn-primary" #editSave>Save changes</button>
+            </div>
+        </div>
+    </div>
+</div>

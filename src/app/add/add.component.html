@@ -1,0 +1,33 @@
+<div class="form">
+    <form class="example-form" [formGroup]="forms">
+
+        <div class="example-full-width" cellspacing="0" style="display: flex; flex-direction: column;" id="forms">
+            <mat-label class="text-center">
+                <h3>Add User</h3>
+            </mat-label>
+            <mat-form-field class="example-full-width">
+                <mat-label>First name</mat-label>
+                <input matInput formControlName="firstName">
+            </mat-form-field>
+            <mat-form-field class="example-full-width">
+                <mat-label>Last Name</mat-label>
+                <input matInput formControlName="lastName">
+            </mat-form-field>
+
+            <mat-form-field class="example-full-width">
+                <mat-label>Enter Title</mat-label>
+                <input matInput formControlName="title">
+            </mat-form-field>
+            <mat-form-field class="example-full-width">
+                <mat-label>Picture link</mat-label>
+                <input matInput formControlName="picture">
+            </mat-form-field>
+
+            <mat-form-field class="example-full-width">
+                <mat-label>Enter Email</mat-label>
+                <input matInput formControlName="email">
+            </mat-form-field>
+            <button mat-raised-button color="primary" (click)="onSubmit()" [disabled]="forms.invalid">Submit</button>
+        </div>
+    </form>
+</div>

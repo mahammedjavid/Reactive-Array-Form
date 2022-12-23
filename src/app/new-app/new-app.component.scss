@@ -3,10 +3,12 @@
   justify-content: space-between;
 }
 #inside {
-  margin: auto;
-  width: 50%;
+  display: flex;
+  justify-content: space-between;
+  margin-left: 245px;
 }
 .aTag {
+  cursor: pointer;
   text-decoration: none;
 }
 .icons {
@@ -15,6 +17,7 @@
   left: 0px;
 }
 .aTAg2 {
+  cursor: pointer;
   position: relative;
   left: 156px;
 }
@@ -24,4 +27,15 @@
 }
 .first {
   margin: 30px 0;
+}
+
+form {
+  width: 82%;
+  margin-left: 238px;
+  font-size: small;
+  padding: 10px;
+  box-shadow: -1px 0px 19px 5px grey;
+}
+.addBtn {
+  border: 1px solid gray;
 }

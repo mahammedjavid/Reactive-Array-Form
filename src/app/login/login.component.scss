@@ -1,0 +1,33 @@
+.borders {
+  border: 1px solid gray;
+  border-radius: 40px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 15px;
+  margin: 5px;
+  cursor: pointer;
+}
+.login {
+  display: flex;
+  height: 80%;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  //   width: 500px;
+}
+.inside {
+  padding: 50px;
+  border: 1px solid gray;
+}
+.userInfo {
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.userData {
+  border: 1px solid gray;
+  padding: 20px;
+  border-radius: 10px;
+}

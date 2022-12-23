@@ -1,0 +1,14 @@
+// .form {
+//   display: flex;
+//   justify-content: center;
+//   align-items: center;
+// }
+
+#forms {
+  width: 30%;
+  margin: auto;
+  display: flex;
+  flex-direction: column;
+  padding: 50px;
+  box-shadow: 0px 2px 13px 4px grey;
+}

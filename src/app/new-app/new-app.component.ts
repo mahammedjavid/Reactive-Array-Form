@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormGroup, FormControl, FormBuilder, FormArray, Validators } from '@angular/forms';
+import { FormGroup, FormControl, FormArray } from '@angular/forms';
 
 @Component({
   selector: 'app-new-app',
@@ -7,10 +7,10 @@ import { FormGroup, FormControl, FormBuilder, FormArray, Validators } from '@ang
   styleUrls: ['./new-app.component.scss']
 })
 export class NewAppComponent implements OnInit {
-  constructor(private fb: FormBuilder) { }
-  forms !: FormGroup
-  show = true;
-  showTask = false
+  constructor() { }
+  forms !: any
+  show = false;
+  showTask = true
 
   get getAcrivityControl() {
     return (<FormArray>this.forms.get('Activity')).controls
@@ -21,8 +21,10 @@ export class NewAppComponent implements OnInit {
 
   ngOnInit(): void {
     this.forms = new FormGroup({
-      Activity: new FormArray([]),
-      Task: new FormArray([])
+      Activity: new FormArray([
+      ]),
+      Task: new FormArray([
+      ])
     })
   }
 
@@ -33,14 +35,22 @@ export class NewAppComponent implements OnInit {
     this.showTask = !this.showTask
   }
 
+  counter = 1
+  count = 1
   addActivity() {
-    const control = new FormControl('')
-    return (<FormArray>this.forms.get('Activity')).push(control)
+    const Activitycontrol = new FormControl('Activity ' + `${this.counter++}`)
+    // console.log(this.forms.value)
+    return (<FormArray>this.forms.get('Activity')).push(Activitycontrol)
   }
 
   AddTaskControl() {
-    const control = new FormControl('')
-    return (<FormArray>this.forms.get('Task')).push(control)
+    const Taskcontrol = new FormControl('Task ' + `${this.count++}`)
+    // console.log(this.forms.value)
+    return (<FormArray>this.forms.get('Task')).push(Taskcontrol)
+  }
+
+  Onsubmit() {
+    console.log(this.forms.value)
   }
 
 

@@ -1,20 +1,31 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { ReactiveFormComponent } from './reactive-form/reactive-form.component';
-import { FormComponent } from './reactive-form/form/form.component';
-import { AppComponent } from './app.component';
 import { NewAppComponent } from './new-app/new-app.component';
+import { ApiIntegrationComponent } from './api-integration/api-integration.component';
+import { AddComponent } from './add/add.component';
+import { AuthguardGuard } from './authguard.guard';
 
 const routes: Routes = [
+
   {
-    path: '', component: ReactiveFormComponent
+    path: 'form', component: ReactiveFormComponent, canActivate: [AuthguardGuard]
   },
   {
-    path: 'form', component: FormComponent
+    path: 'app', component: NewAppComponent, canActivate: [AuthguardGuard]
   },
   {
-    path: 'app', component: NewAppComponent
-  }
+    path: 'api', component: ApiIntegrationComponent, canActivate: [AuthguardGuard]
+  },
+  {
+    path: 'add', component: AddComponent, canActivate: [AuthguardGuard]
+  },
+  // {
+  //   path: 'login', component: LoginComponent
+  // },
+  // {
+  //   path: '', redirectTo: 'login', pathMatch: 'full'
+  // },
 ];
 
 @NgModule({

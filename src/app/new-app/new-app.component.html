@@ -4,19 +4,19 @@
     <a class="aTag" (click)="getShow()" *ngIf="show"><span class="material-icons icons">keyboard_arrow_down</span>
         AllData
     </a>
-    <a class="aTag" (click)="getShow()" *ngIf="!show"><mat-icon class="icons">keyboard_arrow_right</mat-icon>All Data
+    <a class="aTag" (click)="getShow()" *ngIf="!show"><mat-icon class="icons">keyboard_arrow_right</mat-icon>AllData
     </a>
 
-    <button (click)="addActivity()" id="activityAdd">+</button>
+    <button (click)="addActivity()" id="activityAdd" class="addBtn">+</button>
 
     <div class="allActivityData" *ngIf="show">
         <div class="first" *ngFor="let data of getAcrivityControl let i=index" formArrayName="Activity">
             <div class="formdData">
                 <div class="activity">
                     <mat-form-field>
-                        <input type="text" matInput placeholder="Enter Activity Name" [formControlName]="i">
+                        <input type="text" matInput placeholder="Activity" [formControlName]="i">
                     </mat-form-field>
-                    <button mat-raised-button color="primary" (click)="AddTaskControl()">+</button>
+                    <button *ngIf="show" (click)="AddTaskControl()" class="addBtn">+</button>
                 </div>
                 <div class="dateDiv">
                     <mat-form-field>
@@ -36,6 +36,10 @@
             </div>
 
             <!-- !InsideData -->
+
+
+        </div>
+        <div class="arrow" *ngIf="show">
             <a class="aTag aTAg2" (click)="getTask()" *ngIf="showTask"><span
                     class="material-icons icons">keyboard_arrow_down</span>
                 Task
@@ -43,33 +47,35 @@
             <a class="aTag aTAg2" (click)="getTask()" *ngIf="!showTask"><mat-icon
                     class="icons">keyboard_arrow_right</mat-icon>Task
             </a>
+        </div>
 
-            <div class="insideData" *ngIf="showTask">
-                <div class="formdData" *ngFor="let data of getTaskControl let j = index" id="inside">
-                    <div class="activity">
-                        <mat-form-field>
-                            <input type="text" matInput placeholder="Enter Task Name" [formControlName]="j">
-                        </mat-form-field>
-                        <!-- <button mat-raised-button color="primary" (click)="AddTaskControl()">+</button> -->
-                    </div>
-                    <div class="dateDiv">
-                        <mat-form-field>
-                            <mat-label>Choose a End Date</mat-label>
-                            <input matInput [matDatepicker]="picker1" [formControlName]="j">
-                            <mat-datepicker-toggle matIconSuffix [for]="picker1"></mat-datepicker-toggle>
-                            <mat-datepicker #picker1></mat-datepicker>
-                        </mat-form-field>
-
-                        <mat-form-field>
-                            <mat-label>Choose a End Date</mat-label>
-                            <input matInput [matDatepicker]="picker2" [formControlName]="j">
-                            <mat-datepicker-toggle matIconSuffix [for]="picker2"></mat-datepicker-toggle>
-                            <mat-datepicker #picker2></mat-datepicker>
-                        </mat-form-field>
-                    </div>
+        <div class="insideData" *ngIf="showTask && show">
+            <div class="formdData" *ngFor="let item of getTaskControl let j = index " id="inside" formArrayName="Task">
+                <div class="activity">
+                    <mat-form-field>
+                        <input type="text" matInput placeholder="Task" [formControlName]="j">
+                    </mat-form-field>
                 </div>
-            </div>
 
+                <div class="dateDiv">
+                    <mat-form-field>
+                        <mat-label>Choose a End Date</mat-label>
+                        <input matInput [matDatepicker]="picker3" [formControlName]="j">
+                        <mat-datepicker-toggle matIconSuffix [for]="picker3"></mat-datepicker-toggle>
+                        <mat-datepicker #picker3></mat-datepicker>
+                    </mat-form-field>
+
+                    <mat-form-field>
+                        <mat-label>Choose a End Date</mat-label>
+                        <input matInput [matDatepicker]="picker4" [formControlName]="j">
+                        <mat-datepicker-toggle matIconSuffix [for]="picker4"></mat-datepicker-toggle>
+                        <mat-datepicker #picker4></mat-datepicker>
+                    </mat-form-field>
+                </div>
+
+            </div>
         </div>
     </div>
+
+    <!-- <button type="submit" (click)="Onsubmit()">Submit</button> -->
 </form>
